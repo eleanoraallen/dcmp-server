@@ -11,7 +11,8 @@ const server = new ApolloServer({ typeDefs, resolvers, context: ({ req }) => {
   if (token == 'editing' ) {
     return {editing: true}
   }
-},});
+}, introspection: true,
+playground: true,});
 
 // launch server.
 server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
