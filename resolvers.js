@@ -54,7 +54,7 @@ const resolvers = {
                 skip = limit * args.page;
             }
             if (args.query == undefined) {
-                return JSON.stringify(getMaps(skip, limit, undefined));
+                return getMaps(skip, limit, undefined);
             } else if (args.query.random !== undefined && args.query.random) {
                 return (
                     Map.aggregate([{ $sample: { size: limit } }]).then(
