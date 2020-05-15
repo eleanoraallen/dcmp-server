@@ -16,5 +16,11 @@
     "graphql": "^15.0.0",
     "mongoose": "^5.9.13",
     "nodemon": "^2.0.3"
+  },
+  "devDependencies": {
+    "apollo": "^2.27.4"
+  },
+  "resolutions": {
+    "graphql": "^15.0.0"
   }
 }

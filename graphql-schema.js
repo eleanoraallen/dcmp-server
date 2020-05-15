@@ -17,7 +17,7 @@ const typeDefs = gql`
 
     #Filter which can be applyed to mapList
     input MapListQuery {
-        #returns all maps with a 
+        #returns all maps with this id
         id: ID
         #returns all maps with a given map name
         mapName: String
