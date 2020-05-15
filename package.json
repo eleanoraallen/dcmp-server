@@ -19,6 +19,7 @@
     "nodemon": "^2.0.3"
   },
   "devDependencies": {
-    "apollo": "^2.27.4"
+    "apollo": "^2.27.4",
+    "dotenv": "^8.2.0"
   }
 }
