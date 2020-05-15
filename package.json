@@ -19,8 +19,5 @@
   },
   "devDependencies": {
     "apollo": "^2.27.4"
-  },
-  "resolutions": {
-    "graphql": "^15.0.0"
   }
 }
