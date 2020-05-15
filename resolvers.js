@@ -54,7 +54,7 @@ const resolvers = {
                 skip = limit * args.page;
             }
             if (args.query == undefined) {
-                return getMaps(skip, limit, undefined);
+                return JSON.stringify(getMaps(skip, limit, undefined));
             } else if (args.query.random !== undefined && args.query.random) {
                 return (
                     Map.aggregate([{ $sample: { size: limit } }]).then(
@@ -211,7 +211,7 @@ const resolvers = {
                 p.save().then(
                     result => {
                         try {
-                            return JSON.stringify(result._id);
+                            return result._id;
                         } catch (err) {
                             return err;
                         }
