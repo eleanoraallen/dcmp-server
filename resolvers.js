@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const db = mongoose.connection;
 const Map = require('./mongo-schema/map');
 const Point = require('./mongo-schema/point');
-// const url = require('./authorization');
+const url = require('./authorization');
 
 // bind a function to perform when the database has been opened
 db.once('open', function () {
@@ -18,7 +18,7 @@ process.on('SIGINT', function () {
 });
 
 // connect
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(url, { useNewUrlParser: true });
 
 // resolvers
 const resolvers = {
