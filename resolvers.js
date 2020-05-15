@@ -18,7 +18,7 @@ process.on('SIGINT', function () {
 });
 
 // connect
-mongoose.connect(url, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI);
 
 // resolvers
 const resolvers = {
