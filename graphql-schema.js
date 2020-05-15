@@ -46,8 +46,8 @@ const typeDefs = gql`
         #The description for this point
         description: String
         #The category of this point
-        category: Categry
-        #string to describe categories filled in as "other"
+        category: String
+        #string to describe categories filled in as other
         otherText: String
         #The creator of this point
         creatorName: String
@@ -58,7 +58,7 @@ const typeDefs = gql`
         # the ID of a point
         id: ID
         #The ID of the point's map
-        mapID: ID
+        mapId: ID
         # coordinates of the point
         coordinates: [Int!]
         # set to retrieve all points within this distance of a given set of cordinates exclusive
@@ -66,7 +66,7 @@ const typeDefs = gql`
         #name of the creator of the map
         creatorName: String
         #the category of the point
-        category: Categry
+        category: String
         #search operation to preform w/ fields (default AND)
         operation: Operation
         # set true to retrieve a psuedo-random selection of points (note: overides all other params except size, may return duplicate points)
@@ -81,15 +81,20 @@ const typeDefs = gql`
         y: Int!
     }
 
-    # Categry of points
-    enum Categry {
-        ART
-        BUSINESS
-        PUBLICSPACE
-        RESIDENCE
-        SCHOOL
-        WORKPLACE
-        OTHER
+    # Input for adding a Point
+    input PointAdd {
+        #the name of the point
+        name: String!
+        #the coordinates of the point
+        coordinates: [Int!]!
+        #The description for this point
+        description: String
+        #The category of this point
+        category: String
+        #string to describe categories filled in as other
+        otherText: String
+        #The creator of this point
+        creatorName: String
     }
 
     # Search operations
@@ -148,12 +153,24 @@ const typeDefs = gql`
             coordinates: [Int!]!
             #The description for this point
             description: String
-            #The category of this point
-            category: Categry
+            #The category of this point 
+            category: String
             # text to describe the category if it isn't one of the enumerated categories
             otherText: String
             #The creator of this point
             creatorName: String
+        ): ID
+
+        #(for use by the frontend) saves a map and associated points and returns maps ID 
+        saveMap(
+            #The name of this map
+            mapName: String
+            #The description for this map
+            description: String           
+            #The creator of this map
+            creatorName: String
+            #points on this map
+            points: [PointAdd]
         ): ID
     }
 `;

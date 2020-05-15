@@ -219,6 +219,55 @@ const resolvers = {
                 )
             );
         },
+        saveMap: (obj, args, context) => {
+            if (!context.editing) return `Hi! Unless you're the frontend please don't mess with this too much. Thanks!`;
+            const m = new Map();
+            if (args.mapName !== undefined) {
+                m.mapName = args.mapName;
+            }
+            if (args.description !== undefined) {
+                m.description = args.description;
+            }
+            if (args.creatorName !== undefined) {
+                m.creatorName = args.creatorName;
+            }
+            return (
+                m.save().then(
+                    result => {
+                        try {
+                            let mId = result._id;
+                            if (args.points !== undefined) {
+                                args.points.forEach(point => {
+                                    try {
+                                        const p = new Point();
+                                        p.mapId = mId;
+                                        p.name = point.name;
+                                        p.x = point.coordinates[0];
+                                        p.y = point.coordinates[1];
+                                        if (point.description !== undefined) {
+                                            p.description = point.description;
+                                        }
+                                        if (point.category !== undefined) {
+                                            p.category = point.category;
+                                        }
+                                        if (point.otherText !== undefined) {
+                                            p.otherText = point.otherText;
+                                        }
+                                        if (point.creatorName !== undefined) {
+                                            p.creatorName = point.creatorName;
+                                        }
+                                        p.save();
+                                    } catch(err) {}
+                                });
+                            }
+                            return mId;
+                        } catch (err) {
+                            return err;
+                        }
+                    }
+                )
+            );
+        },
     }
 };
 
