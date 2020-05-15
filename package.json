@@ -20,5 +20,5 @@
   },
   "devDependencies": {
     "apollo": "^2.27.4"
-  },
+  }
 }
