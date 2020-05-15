@@ -211,7 +211,7 @@ const resolvers = {
                 p.save().then(
                     result => {
                         try {
-                            return result._id;
+                            return JSON.stringify(result._id);
                         } catch (err) {
                             return err;
                         }
