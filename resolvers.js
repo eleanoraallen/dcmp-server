@@ -280,7 +280,7 @@ const resolvers = {
 function getMaps(skip, limit, query) {
     if (query == undefined) {
         return (
-            Map.find().skip(skip).limit(limit).then(
+            Map.find().sort({$natural:-1}).skip(skip).limit(limit).then(
                 result => {
                     try {
                         const l = result.map(x => {
@@ -301,7 +301,7 @@ function getMaps(skip, limit, query) {
             ));
     } else {
         return (
-            Map.find(query).skip(skip).limit(limit).then(
+            Map.find(query).sort({$natural:-1}).skip(skip).limit(limit).then(
                 result => {
                     try {
                         const l = result.map(x => {
