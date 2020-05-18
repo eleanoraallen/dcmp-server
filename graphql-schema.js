@@ -45,7 +45,7 @@ const typeDefs = gql`
         coordinates: Coordinates!
         """ The description of this point """
         description: String
-        """ The category of this point. One of ART, MONUMENT, PUBLICSPACE, RESIDENCE, SCHOOL, BUISNESS, WORKPLACE, OTHER """
+        """ The category of this point. One of: ART, MONUMENT, PUBLICSPACE, RESIDENCE, SCHOOL, BUISNESS, WORKPLACE, OTHER """
         category: String
         """ String used to describe a points category if it is OTHER """
         otherText: String
@@ -89,7 +89,7 @@ const typeDefs = gql`
         coordinates: [Int!]!
         """ The description of this point """
         description: String
-        """ The category of this point. One of ART, MONUMENT, PUBLICSPACE, RESIDENCE, SCHOOL, BUISNESS, WORKPLACE, OTHER """
+        """ The category of this point. One of: ART, MONUMENT, PUBLICSPACE, RESIDENCE, SCHOOL, BUISNESS, WORKPLACE, OTHER """
         category: String
         """ String used to describe a points category if it is OTHER """
         otherText: String
